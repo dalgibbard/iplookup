@@ -1,19 +1,6 @@
 #!/usr/bin/env python
 from dns.resolver import query as resolve
 
-def main():
-    '''
-    Running this module directly allows for passing a list or string of domains for finding IPs from A records and CNAMEs.
-    Returns as a printed List.
-    '''
-
-    ## DOMAIN LIST
-    domains = ["google.com", "example.com"]
-    #domains = "google.com"
-
-    print(iplookup(domains))
-
-
 def iplookup(domains):
     '''
     This function is used to lookup all IP addresses assigned to a domain using DNS resolution.
@@ -24,7 +11,9 @@ def iplookup(domains):
     # convert single string arg to single item list
     ip_list = []
     if isinstance(domains, str):
-        domains = [domains]
+        domains = domains.split()
+    elif not isinstance(domains, list):
+        raise TypeError('iplookup only supports strings or lists') 
 
     for domain in domains:
         try:
@@ -32,10 +21,6 @@ def iplookup(domains):
         except Exception as e:
             print("Error occured doing lookup for {}".format(domain))
             break
-        ip_list += [ ip.to_text() for ip in answer if not ip == None ]
+        ip_list += [ str(ip.to_text()) for ip in answer if not ip == None ]
     return ip_list
 
-
-
-if __name__ == "__main__":
-    main()
