@@ -15,8 +15,8 @@ pip install iplookup
 ## Example usage
 ```
 from iplookup import iplookup
-
-print(iplookup(["google.com", "example.com"]))
-print(iplookup("yahoo.com"))
+ip = iploopup.iplookup
+print(ip(["google.com", "example.com"]))
+print(ip("yahoo.com"))
 
 ```

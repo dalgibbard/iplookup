@@ -2,8 +2,8 @@ from distutils.core import setup
 setup(
   name = 'iplookup',
   packages = ['iplookup'], # this must be the same as the name above
-  version = '1.0.4',
-  download_url = 'https://github.com/dalgibbard/iplookup/archive/1.0.4.tar.gz',
+  version = '1.0.5',
+  download_url = 'https://github.com/dalgibbard/iplookup/archive/1.0.5.tar.gz',
   description = 'Module for looking up IPs from Domain Names',
   long_description='''
 iplookup
@@ -21,9 +21,11 @@ Install::
 Usage::
   from iplookup import iplookup
 
-  print(iplookup(["google.com", "example.com"]))
+  ip = iplookup.iplookup
 
-  print(iplookup("yahoo.com"))
+  print(ip(["google.com", "example.com"]))
+
+  print(ip("yahoo.com"))
 
 ''',
   author = 'Darren Gibbard',
